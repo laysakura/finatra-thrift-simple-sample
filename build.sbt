@@ -65,7 +65,7 @@ lazy val verboseServiceIdl = (project in file("verboseServiceIdl")).
       "com.twitter" %% "finatra-thrift" % versions.finatra,
       "com.twitter" %% "scrooge-core" % versions.scrooge
     ),
-    scroogeThriftSourceFolder in Compile <<= baseDirectory { base => base / "src/main/thrift" },
+    scroogeThriftSourceFolder in Compile := baseDirectory { base => base / "src/main/thrift" }.value,
     scroogeThriftDependencies in Compile := Seq("finatra-thrift_2.11")
   ).
   aggregate(common).
