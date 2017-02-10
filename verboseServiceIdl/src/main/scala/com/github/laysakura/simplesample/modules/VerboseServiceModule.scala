@@ -1,8 +1,8 @@
-package com.github.laysakura.requestlocaltime.modules
+package com.github.laysakura.simplesample.modules
 
-import com.github.laysakura.requestlocaltime
-import com.github.laysakura.requestlocaltime.annotations.VerboseServiceServer
-import com.github.laysakura.requestlocaltime.idl.{VerboseService, VerboseService$FinagleClient}
+import com.github.laysakura.simplesample
+import com.github.laysakura.simplesample.annotations.VerboseServiceServer
+import com.github.laysakura.simplesample.idl.{VerboseService, VerboseService$FinagleClient}
 import com.google.inject.{Provides, Singleton}
 import com.twitter.finagle.ThriftMux
 import com.twitter.finagle.thrift.ClientId
@@ -21,7 +21,7 @@ object VerboseServiceModule extends TwitterModule {
   @Singleton
   def provideVerboseService(
     @VerboseServiceServer addr: String,
-    @requestlocaltime.annotations.ClientId clientId: String
+    @simplesample.annotations.ClientId clientId: String
   ): VerboseService[Future] = {
     val thriftClient = ThriftMux.Client().withClientId(ClientId(clientId))
     thriftClient.newIface[VerboseService[Future]](addr, ServiceName)

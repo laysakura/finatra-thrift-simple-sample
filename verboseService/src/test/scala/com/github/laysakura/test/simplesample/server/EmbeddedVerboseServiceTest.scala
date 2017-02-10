@@ -1,8 +1,8 @@
-package com.github.laysakura.test.requestlocaltime.server
+package com.github.laysakura.test.simplesample.server
 
-import com.github.laysakura.requestlocaltime.idl.VerboseService
-import com.github.laysakura.requestlocaltime.modules.{ClientIdModule, VerboseServerModule, VerboseServiceModule}
-import com.github.laysakura.requestlocaltime.server.VerboseServiceServer
+import com.github.laysakura.simplesample.idl.VerboseService
+import com.github.laysakura.simplesample.modules.{ClientIdModule, VerboseServerModule, VerboseServiceModule}
+import com.github.laysakura.simplesample.server.VerboseServiceServer
 import com.twitter.finatra.thrift.{EmbeddedThriftServer, ThriftClient}
 import com.twitter.inject.app.TestInjector
 import com.twitter.inject.server.FeatureTest

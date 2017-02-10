@@ -1,4 +1,4 @@
-package com.github.laysakura.requestlocaltime.annotations;
+package com.github.laysakura.simplesample.annotations;
 
 import com.google.inject.BindingAnnotation;
 

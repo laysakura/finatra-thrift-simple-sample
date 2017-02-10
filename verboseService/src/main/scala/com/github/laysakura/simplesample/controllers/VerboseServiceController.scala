@@ -1,7 +1,7 @@
-package com.github.laysakura.requestlocaltime.controllers
+package com.github.laysakura.simplesample.controllers
 
-import com.github.laysakura.requestlocaltime.idl
-import com.github.laysakura.requestlocaltime.idl.VerboseService.Echo
+import com.github.laysakura.simplesample.idl
+import com.github.laysakura.simplesample.idl.VerboseService.Echo
 import com.google.inject.{Inject, Singleton}
 import com.twitter.finatra.thrift.Controller
 import com.twitter.inject.Logging

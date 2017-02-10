@@ -1,6 +1,6 @@
-package com.github.laysakura.requestlocaltime.modules
+package com.github.laysakura.simplesample.modules
 
-import com.github.laysakura.requestlocaltime.annotations.ClientId
+import com.github.laysakura.simplesample.annotations.ClientId
 import com.google.inject.{Provides, Singleton}
 import com.twitter.inject.TwitterModule
 

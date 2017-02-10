@@ -1,4 +1,4 @@
-namespace java com.github.laysakura.requestlocaltime.idl
+namespace java com.github.laysakura.simplesample.idl
 
 service VerboseService {
   string echo(1: string message)

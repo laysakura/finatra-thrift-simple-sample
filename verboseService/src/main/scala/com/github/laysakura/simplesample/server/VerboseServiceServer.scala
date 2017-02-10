@@ -1,7 +1,7 @@
-package com.github.laysakura.requestlocaltime.server
+package com.github.laysakura.simplesample.server
 
-import com.github.laysakura.requestlocaltime.controllers.VerboseServiceController
-import com.github.laysakura.requestlocaltime.modules.ClientIdModule
+import com.github.laysakura.simplesample.controllers.VerboseServiceController
+import com.github.laysakura.simplesample.modules.ClientIdModule
 import com.twitter.finatra.thrift.ThriftServer
 import com.twitter.finatra.thrift
 import com.twitter.finatra.thrift.routing.ThriftRouter
