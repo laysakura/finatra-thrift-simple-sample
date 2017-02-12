@@ -1,4 +1,4 @@
-namespace java com.github.laysakura.finatraquill.idl
+namespace java com.github.laysakura.simplesample.idl
 
 service VerboseService {
   string echo(
