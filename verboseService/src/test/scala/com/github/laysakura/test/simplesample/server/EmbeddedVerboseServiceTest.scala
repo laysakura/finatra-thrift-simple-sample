@@ -23,10 +23,8 @@ class EmbeddedVerboseServiceTest extends FeatureTest {
 
   lazy private val client = server.thriftClient[VerboseService[Future]]("EmbeddedVerboseServiceTest")
 
-  "client" should {
-    "successfully call echo() API" in {
-      val res = Await.result(client.echo("hi :D"))
-      res shouldBe "You said: hi :D"
-    }
+  test("successfully call echo() API") {
+    val res = Await.result(client.echo("hi :D"))
+    res shouldBe "You said: hi :D"
   }
 }

@@ -9,13 +9,12 @@ lazy val commonSettings = Seq(
 
 lazy val versions = new {
   val logback = "1.1.7"
-  val finagle = "6.40.0"
-  val finatra = "2.6.0"
-  val scrooge = "4.12.0"
+  val finatra = "2.8.0"
+  val scrooge = "4.14.0"
 
   val guice = "4.0"
-  val scalatest = "3.0.1"
-  val specs = "2.3.12"
+  val scalatest = "3.0.0"
+  val specs2 = "2.4.17"
 }
 
 lazy val root = (project in file(".")).
@@ -31,21 +30,8 @@ lazy val common = (project in file("common")).
       "com.twitter" %% "inject-core" % versions.finatra,
       "com.twitter" %% "inject-app" % versions.finatra,
 
-      "org.specs2" %% "specs2" % versions.specs % "test",
       "org.scalatest" %% "scalatest" % versions.scalatest % "test",
-
-      // for TestInjector
-      "com.google.inject.extensions" % "guice-testlib" % versions.guice % "test",
-      "com.twitter" %% "finatra-thrift" % versions.finatra % "test",
-      "com.twitter" %% "finatra-thrift" % versions.finatra % "test" classifier "tests",
-      "com.twitter" %% "inject-app" % versions.finatra % "test",
-      "com.twitter" %% "inject-app" % versions.finatra % "test" classifier "tests",
-      "com.twitter" %% "inject-core" % versions.finatra % "test",
-      "com.twitter" %% "inject-core" % versions.finatra % "test" classifier "tests",
-      "com.twitter" %% "inject-modules" % versions.finatra % "test",
-      "com.twitter" %% "inject-modules" % versions.finatra % "test" classifier "tests",
-      "com.twitter" %% "inject-server" % versions.finatra % "test",
-      "com.twitter" %% "inject-server" % versions.finatra % "test" classifier "tests"
+      "org.specs2" %% "specs2-mock" % versions.specs2 % "test"
     )
   )
 
@@ -53,8 +39,20 @@ lazy val verboseService = (project in file("verboseService")).
   settings(commonSettings: _*).
   settings(
     libraryDependencies ++= Seq(
-      "com.twitter" %% "finagle-thrift" % versions.finagle,
-      "com.twitter" %% "finagle-core" % versions.finagle
+      "com.twitter" %% "finatra-thrift" % versions.finatra,
+
+      "com.twitter" %% "finatra-thrift" % versions.finatra % "test",
+      "com.twitter" %% "inject-app" % versions.finatra % "test",
+      "com.twitter" %% "inject-core" % versions.finatra % "test",
+      "com.twitter" %% "inject-modules" % versions.finatra % "test",
+      "com.twitter" %% "inject-server" % versions.finatra % "test",
+      "com.google.inject.extensions" % "guice-testlib" % versions.guice % "test",
+
+      "com.twitter" %% "finatra-thrift" % versions.finatra % "test" classifier "tests",
+      "com.twitter" %% "inject-app" % versions.finatra % "test" classifier "tests",
+      "com.twitter" %% "inject-core" % versions.finatra % "test" classifier "tests",
+      "com.twitter" %% "inject-modules" % versions.finatra % "test" classifier "tests",
+      "com.twitter" %% "inject-server" % versions.finatra % "test" classifier "tests"
     )
   ).
   aggregate(verboseServiceIdl).
@@ -64,8 +62,7 @@ lazy val verboseServiceIdl = (project in file("verboseServiceIdl")).
   settings(commonSettings: _*).
   settings(
     libraryDependencies ++= Seq(
-      "com.twitter" %% "finatra-thrift" % versions.finatra,
-      "com.twitter" %% "scrooge-core" % versions.scrooge
+      "com.twitter" %% "finatra-thrift" % versions.finatra
     ),
     scroogeThriftSourceFolder in Compile := baseDirectory { base => base / "src/main/thrift" }.value,
     scroogeThriftDependencies in Compile := Seq("finatra-thrift_2.11")
