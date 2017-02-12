@@ -2,23 +2,24 @@ package com.github.laysakura.simplesample.controllers
 
 import com.github.laysakura.simplesample.idl
 import com.github.laysakura.simplesample.idl.VerboseService.Echo
+import com.github.laysakura.simplesample.services.UserService
 import com.google.inject.{Inject, Singleton}
 import com.twitter.finatra.thrift.Controller
 import com.twitter.inject.Logging
-import com.twitter.util.Future
 
 @Singleton
-class VerboseServiceController @Inject() ()
+class VerboseServiceController @Inject() (
+  userService: UserService
+)
   extends Controller
     with idl.VerboseService.BaseServiceIface
     with Logging
 {
   override val echo = handle(Echo) { args =>
-    debug(s"""debug!\n\tyou said "${args.message}"""")
     info(s"""info!\n\tyou said "${args.message}"""")
-    warn(s"""warn!\n\tyou said "${args.message}"""")
-    error(s"""error!\n\tyou said "${args.message}"""")
 
-    Future(s"You said: ${args.message}")
+    userService.getSirName(args.userId).map(sirName =>
+      s"Hi $sirName, you said: ${args.message}"
+    )
   }
 }

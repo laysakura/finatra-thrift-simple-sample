@@ -11,6 +11,7 @@ lazy val versions = new {
   val logback = "1.1.7"
   val finatra = "2.8.0"
   val scrooge = "4.14.0"
+  val quill = "1.1.0"
 
   val guice = "4.0"
   val scalatest = "3.0.0"
@@ -29,6 +30,7 @@ lazy val common = (project in file("common")).
       "com.twitter" %% "scrooge-core" % versions.scrooge,
       "com.twitter" %% "inject-core" % versions.finatra,
       "com.twitter" %% "inject-app" % versions.finatra,
+      "io.getquill" %% "quill-finagle-mysql" % versions.quill,
 
       "org.scalatest" %% "scalatest" % versions.scalatest % "test",
       "org.specs2" %% "specs2-mock" % versions.specs2 % "test"

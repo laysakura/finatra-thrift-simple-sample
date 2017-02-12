@@ -1,7 +1,7 @@
 package com.github.laysakura.simplesample.server
 
 import com.github.laysakura.simplesample.controllers.VerboseServiceController
-import com.github.laysakura.simplesample.modules.ClientIdModule
+import com.github.laysakura.simplesample.modules.{ClientIdModule, QuillContextModule}
 import com.twitter.finatra.thrift.ThriftServer
 import com.twitter.finatra.thrift
 import com.twitter.finatra.thrift.routing.ThriftRouter
@@ -16,7 +16,8 @@ class VerboseServiceServer extends ThriftServer
   override def defaultHttpPort: Int = ADMIN_PORT
 
   override val modules = Seq(
-    new ClientIdModule("VerboseServiceServer")
+    new ClientIdModule("VerboseServiceServer"),
+    QuillContextModule
   )
 
   override def configureThrift(router: ThriftRouter) {
